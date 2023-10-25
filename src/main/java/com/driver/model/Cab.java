@@ -11,15 +11,7 @@ import javax.persistence.*;
 @Table(name="cab")
 
 public class Cab{
-    public Cab(int id, int perKmRate, boolean isAvailable, Driver driver) {
-        this.id = id;
-        this.perKmRate = perKmRate;
-        this.isAvailable = isAvailable;
-        this.driver = driver;
-    }
 
-    public Cab() {
-    }
 
 
     @Getter
@@ -35,6 +27,16 @@ public class Cab{
 
     @OneToOne(mappedBy = "cab",cascade = CascadeType.ALL)
     private Driver driver;
+
+    public Cab(int id, int perKmRate, boolean isAvailable, Driver driver) {
+        this.id = id;
+        this.perKmRate = perKmRate;
+        this.isAvailable = isAvailable;
+        this.driver = driver;
+    }
+
+    public Cab() {
+    }
 
     public void setId(int id) {
         this.id = id;

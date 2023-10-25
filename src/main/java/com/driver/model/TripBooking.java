@@ -7,6 +7,30 @@ import java.util.List;
 @Entity
 @Table(name="tripbooking")
 public class TripBooking{
+
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int tripBookingId;
+
+    private String fromLocation;
+
+    private String toLocation;
+
+    private int distanceInKm;
+
+    @Enumerated(value = EnumType.STRING)
+    private TripStatus tripStatus;
+
+    private  int bill;
+
+    @ManyToOne
+    @JoinColumn
+    private Customer customer;
+
+    @ManyToOne
+    @JoinColumn
+    private Driver driver;
     public TripBooking(int tripBookingId, String fromLocation, String toLocation, int distanceInKm, TripStatus tripStatus, int bill, Customer customer, Driver driver) {
         this.tripBookingId = tripBookingId;
         this.fromLocation = fromLocation;
@@ -29,29 +53,6 @@ public class TripBooking{
 
     public TripBooking() {
     }
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int tripBookingId;
-
-    private String fromLocation;
-
-    private String toLocation;
-
-    private int distanceInKm;
-
-    @Enumerated(value = EnumType.STRING)
-    private TripStatus tripStatus;
-
-    private  int bill;
-
-    @ManyToOne
-    @JoinColumn
-    private Customer customer;
-
-    @ManyToOne
-    @JoinColumn
-    private Driver driver;
 
     public int getTripBookingId() {
         return tripBookingId;

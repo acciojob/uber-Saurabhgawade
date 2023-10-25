@@ -13,19 +13,9 @@ import java.util.List;
 @Table(name="driver")
 
 public class Driver{
-    public Driver(int driverId, String mobileNo, String password, Cab cab, List<TripBooking> tripBookingList) {
-        this.driverId = driverId;
-        this.mobileNo = mobileNo;
-        this.password = password;
-        this.cab = cab;
-        this.tripBookingList = tripBookingList;
-    }
-
-    public Driver() {
-    }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int driverId;
 
     private  String mobileNo;
@@ -39,6 +29,18 @@ public class Driver{
 
     @OneToMany(mappedBy ="driver",cascade = CascadeType.ALL)
     private List<TripBooking>tripBookingList=new ArrayList<>();
+
+    public Driver(int driverId, String mobileNo, String password, Cab cab, List<TripBooking> tripBookingList) {
+        this.driverId = driverId;
+        this.mobileNo = mobileNo;
+        this.password = password;
+        this.cab = cab;
+        this.tripBookingList = tripBookingList;
+    }
+
+    public Driver() {
+    }
+
 
     public int getDriverId() {
         return driverId;

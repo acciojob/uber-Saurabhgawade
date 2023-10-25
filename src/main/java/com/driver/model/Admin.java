@@ -12,14 +12,6 @@ import javax.persistence.*;
 
 
 public class Admin{
-    public Admin(int adminId, String username, String password) {
-        this.adminId = adminId;
-        this.username = username;
-        this.password = password;
-    }
-
-    public Admin() {
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +21,16 @@ public class Admin{
     private String username;
 
     private String password;
+
+    public Admin(int adminId, String username, String password) {
+        this.adminId = adminId;
+        this.username = username;
+        this.password = password;
+    }
+
+    public Admin() {
+    }
+
 
 
     public int getAdminId() {

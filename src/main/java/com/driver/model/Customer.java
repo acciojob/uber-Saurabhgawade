@@ -13,15 +13,6 @@ import java.util.List;
 @Table(name="customer")
 
 public class Customer{
-    public Customer(int customerId, String mobileNo, String password, List<TripBooking> tripBookingList) {
-        this.customerId = customerId;
-        this.mobileNo = mobileNo;
-        this.password = password;
-        this.tripBookingList = tripBookingList;
-    }
-
-    public Customer() {
-    }
 
 
     @Id
@@ -34,6 +25,17 @@ public class Customer{
 
     @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
     private List<TripBooking>tripBookingList=new ArrayList<>();
+
+    public Customer(int customerId, String mobileNo, String password, List<TripBooking> tripBookingList) {
+        this.customerId = customerId;
+        this.mobileNo = mobileNo;
+        this.password = password;
+        this.tripBookingList = tripBookingList;
+    }
+
+    public Customer() {
+    }
+
 
     public int getCustomerId() {
         return customerId;
