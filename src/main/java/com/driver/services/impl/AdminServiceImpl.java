@@ -33,13 +33,11 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public Admin updatePassword(Integer adminId, String password)throws Exception {
+	public Admin updatePassword(Integer adminId, String password){
 		//Update the password of admin with given id
-		Optional<Admin>optionalAdmin=adminRepository1.findById(adminId);
-		if(!optionalAdmin.isPresent()){
-			throw new Exception("Admin Id Not found");
-		}
-		Admin admin=optionalAdmin.get();
+		Admin admin=adminRepository1.findById(adminId).get();
+
+
 		admin.setPassword(password);
 		adminRepository1.save(admin);
 
@@ -60,12 +58,14 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public List<Driver> getListOfDrivers() {
 		//Find the list of all drivers
+		return driverRepository1.findAll();
 
 	}
 
 	@Override
 	public List<Customer> getListOfCustomers() {
 		//Find the list of all customers
+		return customerRepository1.findAll();
 
 	}
 

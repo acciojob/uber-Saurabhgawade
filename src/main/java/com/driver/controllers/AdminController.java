@@ -2,6 +2,7 @@ package com.driver.controllers;
 
 import com.driver.model.Admin;
 import com.driver.model.Customer;
+import com.driver.model.Driver;
 import com.driver.services.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,13 +24,10 @@ public class AdminController {
 
 	@PutMapping("/update")
 	public ResponseEntity<Admin> updateAdminPassword(@RequestParam Integer adminId, @RequestParam String password){
-		try{
+
 			Admin admin=adminService.updatePassword(adminId,password);
 			return new ResponseEntity<>(admin,HttpStatus.CREATED);
-		}
-		catch(Exception e){
-			return new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
-		}
+
 
 
 	}
@@ -41,11 +39,11 @@ public class AdminController {
 
 	@GetMapping("/listOfCustomers")
 	public List<Customer> listOfCustomers() {
-		return listOfCustomers;
+		return adminService.getListOfCustomers();
 	}
 
 	@GetMapping("/listOfDrivers")
 	public List<Driver> listOfDrivers() {
-		return listOfDrivers;
+		return adminService.getListOfDrivers();
 	}
 }
